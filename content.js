@@ -1,9 +1,13 @@
+let previousLink = null;
+
 const modifyCaptionLink = () => {
     const captionLink = getCaptionLink();
     if (captionLink) {
         const captionSpan = captionLink.querySelector('span');
-        console.log(captionLink.href);
-        console.log(captionSpan.textContent);
+        if (captionSpan && captionLink.href !== previousLink) {
+            console.log(captionSpan.href);
+            previousLink = captionLink.href;
+        }
     }
 };
 
