@@ -1,7 +1,12 @@
+const modifyCaptionLink = () => {
+    const captionLink = getCaptionLink();
+    console.log(captionLink);
+};
+
 const handleMutation = (mutationsList, mutationObserver) => {
     for (const mutation of mutationsList) {
         if (mutation.type === 'childList' || mutation.type === 'subtree') {
-            console.log("Modification on target.");
+            modifyCaptionLink();
         }
     }
 };
@@ -14,10 +19,10 @@ const getCaptionLink = () => {
         const imageSection = postContainer.querySelector(':nth-child(5)');
 
         const captionLink = imageSection.querySelector('span:has(> a)');
-        
+
         if (captionLink) return captionLink;
     }
-    
+
     return null;
 };
 
