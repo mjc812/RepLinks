@@ -1,6 +1,10 @@
 const modifyCaptionLink = () => {
     const captionLink = getCaptionLink();
-    console.log(captionLink);
+    if (captionLink) {
+        const captionSpan = captionLink.querySelector('span');
+        console.log(captionLink.href);
+        console.log(captionSpan.textContent);
+    }
 };
 
 const handleMutation = (mutationsList, mutationObserver) => {
