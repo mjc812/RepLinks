@@ -23,9 +23,12 @@ const getCaptionLink = () => {
         const imageSection = postContainer.querySelector(':nth-child(5)');
 
         const captionSpan = imageSection.querySelector('span:has(> a)');
-        const captionLink = captionSpan.querySelector('a');
 
-        if (captionLink) return captionLink;
+        if (captionSpan) {
+            const captionLink = captionSpan.querySelector('a');
+            if (captionLink) return captionLink;
+        }
+
     }
 
     return null;
