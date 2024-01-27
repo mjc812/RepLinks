@@ -6,7 +6,7 @@
 
   "content_scripts": [
     {
-      "js": ["scripts/content.js"],
+      "js": ["scripts/content/content.js", "scripts/content/utility.js"],
       "matches": [
         "https://www.reddit.com/r/FashionReps/comments/*"
       ]
