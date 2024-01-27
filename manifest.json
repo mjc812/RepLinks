@@ -3,13 +3,21 @@
   "name": "RepLinks",
   "version": "1.0",
   "description": "Link translator for the RepFam.",
-
   "content_scripts": [
     {
-      "js": ["content.js"],
+      "js": [
+        "content.js"
+      ],
       "matches": [
         "https://www.reddit.com/r/FashionReps/comments/*"
       ]
     }
+  ],
+  "background": {
+    "service_worker": "service_worker.js",
+    "type": "module"
+  },
+  "host_permissions": [
+    "<all_urls>"
   ]
 }

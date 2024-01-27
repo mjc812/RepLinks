@@ -1,3 +1,9 @@
+var port = chrome.runtime.connect({ name: "knockknock" });
+
+port.onMessage.addListener(function (msg) {
+    console.log(msg);
+});
+
 let previousLink = null;
 
 const modifyCaptionLink = () => {
@@ -5,7 +11,8 @@ const modifyCaptionLink = () => {
     if (captionLink) {
         const captionSpan = captionLink.querySelector('span');
         if (captionSpan && captionLink.href !== previousLink) {
-            console.log(captionSpan.href);
+            console.log(captionLink.href);
+            port.postMessage({ shortenedURL: captionLink.href });
             previousLink = captionLink.href;
         }
     }
