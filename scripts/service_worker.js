@@ -1,18 +1,23 @@
-import { bar, foo } from './util.js';
+import { convertLink } from './util.js';
 
 chrome.runtime.onInstalled.addListener(() => {
     console.log("RepLinks Installed!");
-    foo();
-    bar();
 });
 
 chrome.runtime.onConnect.addListener(function (port) {
     console.assert(port.name === "knockknock");
     port.onMessage.addListener(function (msg) {
-        const finalDestination = getFinalDestination(msg.shortenedURL);
-        getFinalDestination(msg.shortenedURL)
-            .then((finalDestination) => console.log(finalDestination))
-            .catch((error) => console.log(finalDestination));
+        if (msg.shortenedURL.includes('allapp')) {
+            getFinalDestination(msg.shortenedURL)
+                .then((expandedURL) => {
+                    convertLink(expandedURL);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        } else {
+            convertLink(msg.shortenedURL);
+        }
     });
 });
 

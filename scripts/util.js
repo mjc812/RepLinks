@@ -1,9 +1,5 @@
-const foo = () => {
-    console.log("Foo!");
+const convertLink = (link) => {
+    console.log(link);
 }
 
-const bar = () => {
-    console.log("Bar!");
-}
-
-export { foo, bar };
+export { convertLink };
