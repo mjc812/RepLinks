@@ -1,8 +1,9 @@
-import { foo } from './util.js';
+import { bar, foo } from './util.js';
 
 chrome.runtime.onInstalled.addListener(() => {
     console.log("RepLinks Installed!");
     foo();
+    bar();
 });
 
 chrome.runtime.onConnect.addListener(function (port) {
