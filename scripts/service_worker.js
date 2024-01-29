@@ -7,8 +7,8 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.runtime.onConnect.addListener(function (port) {
     console.assert(port.name === "knockknock");
     port.onMessage.addListener(function (msg) {
-        if (msg.shortenedURL.includes('allapp')) {
-            getFinalDestination(msg.shortenedURL)
+        if (msg.url.includes('allapp')) {
+            getFinalDestination(msg.url)
                 .then((expandedURL) => {
                     convertLink(expandedURL);
                 })
@@ -16,7 +16,7 @@ chrome.runtime.onConnect.addListener(function (port) {
                     console.log(error);
                 });
         } else {
-            convertLink(msg.shortenedURL);
+            convertLink(msg.url);
         }
     });
 });

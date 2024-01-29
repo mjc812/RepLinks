@@ -11,7 +11,7 @@ const modifyCaptionLink = () => {
     if (captionLink) {
         const captionSpan = captionLink.querySelector('span');
         if (captionSpan && captionLink.href !== previousLink) {
-            port.postMessage({ shortenedURL: captionLink.href });
+            port.postMessage({ url: captionLink.href });
             previousLink = captionLink.href;
         }
     }
