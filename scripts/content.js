@@ -1,9 +1,19 @@
+var port = chrome.runtime.connect({ name: "knockknock" });
+
+port.onMessage.addListener(function (msg) {
+    console.log(msg);
+});
+
+let previousLink = null;
+
 const modifyCaptionLink = () => {
     const captionLink = getCaptionLink();
     if (captionLink) {
         const captionSpan = captionLink.querySelector('span');
-        console.log(captionLink.href);
-        console.log(captionSpan.textContent);
+        if (captionSpan && captionLink.href !== previousLink) {
+            port.postMessage({ url: captionLink.href });
+            previousLink = captionLink.href;
+        }
     }
 };
 
